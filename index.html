@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FIREBASE & APP SCRIPT -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        ...
     <script>
         tailwind.config = {
             theme: {
@@ -399,12 +403,13 @@
 
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'syde-kasir-coffee-shop';
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-            apiKey: "demo-api-key",
-            authDomain: "demo-project.firebaseapp.com",
-            projectId: "demo-project",
-            storageBucket: "demo-project.appspot.com",
-            messagingSenderId: "123456789",
-            appId: "1:123456789:web:demo"
+          apiKey: "AIzaSyAU08I-eEq43CwBQaqq5e9-oe-EmBSVmjM",
+          authDomain: "sydekasir.firebaseapp.com",
+          projectId: "sydekasir",
+          storageBucket: "sydekasir.firebasestorage.app",
+          messagingSenderId: "1079974368162",
+          appId: "1:1079974368162:web:1daa239cd5f5b171db18fb",
+          measurementId: "G-64WFLP66Y0"
         };
 
         let db, auth, currentUserAuth;
