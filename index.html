@@ -32,42 +32,8 @@
 </head>
 <body class="h-full bg-zinc-950 text-zinc-100 font-sans antialiased selection:bg-zinc-800 selection:text-white">
 
-    <!-- LOGIN SCREEN -->
-    <div id="login-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
-        <div class="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
-            <div class="text-center mb-6 sm:mb-8">
-                <div class="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white text-black mb-3 sm:mb-4 shadow-lg">
-                    <i class="fa-solid fa-mug-hot text-xl sm:text-2xl"></i>
-                </div>
-                <h1 class="text-xl sm:text-2xl font-bold tracking-tight">SYDE KASIR</h1>
-                <p class="text-xs sm:text-sm text-zinc-400 mt-1">Coffee Shop POS System</p>
-            </div>
-
-            <form id="login-form" class="space-y-4 sm:space-y-5">
-                <div>
-                    <label class="block text-xs font-medium uppercase tracking-wider text-zinc-400 mb-1.5 sm:mb-2">Username</label>
-                    <input type="text" id="login-username" required placeholder="Masukkan username..." 
-                        class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors text-sm sm:text-base">
-                </div>
-                <div>
-                    <label class="block text-xs font-medium uppercase tracking-wider text-zinc-400 mb-1.5 sm:mb-2">Password</label>
-                    <input type="password" id="login-password" required placeholder="Masukkan password..." 
-                        class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors text-sm sm:text-base">
-                </div>
-                <button type="submit" class="w-full py-3.5 bg-white text-black font-semibold rounded-xl hover:bg-zinc-200 transition-all shadow-lg active:scale-[0.98] text-sm sm:text-base">
-                    Masuk Sistem
-                </button>
-            </form>
-
-            <div class="mt-6 pt-5 border-t border-zinc-800 text-xs text-zinc-500 text-center space-y-1">
-                <p><span class="font-semibold text-zinc-400">Admin:</span> Admin</p>
-                <p><span class="font-semibold text-zinc-400">Kasir:</span> Kasir</p>
-            </div>
-        </div>
-    </div>
-
     <!-- MAIN APP WRAPPER -->
-    <div id="main-app" class="h-full flex flex-col hidden overflow-hidden">
+    <div id="main-app" class="h-full flex flex-col overflow-hidden">
         <!-- TOP NAVIGATION BAR -->
         <header class="bg-zinc-900 border-b border-zinc-800 flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 py-3 md:py-0 md:h-16 shrink-0 z-20 gap-3 md:gap-0">
             <div class="flex items-center justify-between w-full md:w-auto">
@@ -526,37 +492,6 @@
                 drawer.classList.add('translate-y-full');
             }
         }
-
-        // Login Handler
-        document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const u = document.getElementById('login-username').value.trim();
-            const p = document.getElementById('login-password').value.trim();
-
-            if (u === 'Admin' && p === 'sydeadmin2026') {
-                window.state.currentUser = { username: 'Admin', role: 'admin' };
-            } else if (u === 'Kasir' && p === 'kasir2026') {
-                window.state.currentUser = { username: 'Kasir', role: 'cashier' };
-            } else {
-                showCustomModal("Login Gagal", "Username atau Password salah. Periksa kembali kredensial Anda.", "error");
-                return;
-            }
-
-            document.getElementById('login-screen').classList.add('hidden');
-            document.getElementById('main-app').classList.remove('hidden');
-
-            document.getElementById('user-display-name').innerText = window.state.currentUser.username;
-            document.getElementById('user-display-role').innerText = window.state.currentUser.role === 'admin' ? 'Administrator' : 'Kasir Toko';
-            document.getElementById('user-avatar-initial').innerText = window.state.currentUser.username[0];
-            document.getElementById('user-avatar-mobile').innerText = window.state.currentUser.username[0];
-            if (window.state.currentUser.role === 'admin') {
-                document.querySelectorAll('.admin-only').forEach(el => el.classList.remove('hidden'));
-            } else {
-                document.querySelectorAll('.admin-only').forEach(el => el.classList.add('hidden'));
-            }
-
-            renderAll();
-        });
 
         // Navigation Tab Switcher
         window.switchTab = function(tabName) {
@@ -1149,9 +1084,23 @@ function sendWhatsAppReceipt(order, phone) {
             document.getElementById('custom-modal').classList.add('hidden');
         }
 
-        // Initialize Firebase on load
+// Inisialisasi otomatis tanpa login
         window.onload = function() {
             initFirebase();
+            
+            // Set otomatis sebagai Admin agar semua fitur terbuka
+            window.state.currentUser = { username: 'Admin', role: 'admin' };
+            
+            // Tampilkan elemen khusus admin
+            document.querySelectorAll('.admin-only').forEach(el => el.classList.remove('hidden'));
+            
+            // Perbarui nama profil di header
+            document.getElementById('user-display-name').innerText = 'Admin';
+            document.getElementById('user-display-role').innerText = 'Administrator';
+            document.getElementById('user-avatar-initial').innerText = 'A';
+            document.getElementById('user-avatar-mobile').innerText = 'A';
+            
+            renderAll();
         };
     </script>
 </body>
