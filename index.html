@@ -844,7 +844,7 @@
             text += `%0ATerima kasih telah berkunjung ke Syde Coffee!`;
 
             const cleanPhone = phone.replace(/\D/g, '');
-            const url = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${text}`;
+            const url = `https://wa.me/send?phone=${cleanPhone}&text=${text}`;
             window.open(url, '_blank');
         }
 
