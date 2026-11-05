@@ -10,10 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FIREBASE & APP SCRIPT -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        ...
     <script>
         tailwind.config = {
             theme: {
@@ -38,32 +34,32 @@
 
     <!-- LOGIN SCREEN -->
     <div id="login-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
-        <div class="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-2xl p-8 shadow-2xl">
-            <div class="text-center mb-8">
-                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white text-black mb-4 shadow-lg">
-                    <i class="fa-solid fa-mug-hot text-2xl"></i>
+        <div class="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
+            <div class="text-center mb-6 sm:mb-8">
+                <div class="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white text-black mb-3 sm:mb-4 shadow-lg">
+                    <i class="fa-solid fa-mug-hot text-xl sm:text-2xl"></i>
                 </div>
-                <h1 class="text-2xl font-bold tracking-tight">SYDE KASIR</h1>
-                <p class="text-sm text-zinc-400 mt-1">Coffee Shop Point of Sale System</p>
+                <h1 class="text-xl sm:text-2xl font-bold tracking-tight">SYDE KASIR</h1>
+                <p class="text-xs sm:text-sm text-zinc-400 mt-1">Coffee Shop POS System</p>
             </div>
 
-            <form id="login-form" class="space-y-5">
+            <form id="login-form" class="space-y-4 sm:space-y-5">
                 <div>
-                    <label class="block text-xs font-medium uppercase tracking-wider text-zinc-400 mb-2">Username</label>
+                    <label class="block text-xs font-medium uppercase tracking-wider text-zinc-400 mb-1.5 sm:mb-2">Username</label>
                     <input type="text" id="login-username" required placeholder="Masukkan username..." 
-                        class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors">
+                        class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors text-sm sm:text-base">
                 </div>
                 <div>
-                    <label class="block text-xs font-medium uppercase tracking-wider text-zinc-400 mb-2">Password</label>
+                    <label class="block text-xs font-medium uppercase tracking-wider text-zinc-400 mb-1.5 sm:mb-2">Password</label>
                     <input type="password" id="login-password" required placeholder="Masukkan password..." 
-                        class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors">
+                        class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors text-sm sm:text-base">
                 </div>
-                <button type="submit" class="w-full py-3.5 bg-white text-black font-semibold rounded-xl hover:bg-zinc-200 transition-all shadow-lg active:scale-[0.98]">
+                <button type="submit" class="w-full py-3.5 bg-white text-black font-semibold rounded-xl hover:bg-zinc-200 transition-all shadow-lg active:scale-[0.98] text-sm sm:text-base">
                     Masuk Sistem
                 </button>
             </form>
 
-            <div class="mt-6 pt-6 border-t border-zinc-800 text-xs text-zinc-500 text-center space-y-1">
+            <div class="mt-6 pt-5 border-t border-zinc-800 text-xs text-zinc-500 text-center space-y-1">
                 <p><span class="font-semibold text-zinc-400">Admin:</span> Admin</p>
                 <p><span class="font-semibold text-zinc-400">Kasir:</span> Kasir</p>
             </div>
@@ -71,37 +67,46 @@
     </div>
 
     <!-- MAIN APP WRAPPER -->
-    <div id="main-app" class="h-full flex flex-col hidden">
+    <div id="main-app" class="h-full flex flex-col hidden overflow-hidden">
         <!-- TOP NAVIGATION BAR -->
-        <header class="h-16 bg-zinc-900 border-b border-zinc-800 flex items-center justify-between px-6 shrink-0 z-20">
-            <div class="flex items-center space-x-4">
-                <div class="flex items-center space-x-2">
-                    <div class="w-9 h-9 bg-white text-black rounded-lg flex items-center justify-center font-bold">
-                        <i class="fa-solid fa-mug-hot"></i>
+        <header class="bg-zinc-900 border-b border-zinc-800 flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 py-3 md:py-0 md:h-16 shrink-0 z-20 gap-3 md:gap-0">
+            <div class="flex items-center justify-between w-full md:w-auto">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 sm:w-9 sm:h-9 bg-white text-black rounded-lg flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-mug-hot text-sm sm:text-base"></i>
                     </div>
-                    <span class="font-bold text-lg tracking-wider">SYDE KASIR</span>
+                    <span class="font-bold text-base sm:text-lg tracking-wider">SYDE KASIR</span>
                 </div>
-                <div class="h-5 w-px bg-zinc-800"></div>
-                <nav id="nav-tabs" class="flex space-x-1">
-                    <button onclick="switchTab('pos')" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-colors bg-white text-black" data-tab="pos">
-                        <i class="fa-solid fa-cash-register mr-2"></i>Kasir (POS)
+                <!-- User Profile badge on Mobile -->
+                <div class="flex md:hidden items-center space-x-2">
+                    <div class="w-8 h-8 bg-zinc-800 rounded-full flex items-center justify-center text-xs font-bold border border-zinc-700" id="user-avatar-mobile">A</div>
+                    <button onclick="logout()" class="p-1.5 text-zinc-400 hover:text-red-400 transition-colors" title="Keluar">
+                        <i class="fa-solid fa-right-from-bracket text-base"></i>
                     </button>
-                    <button onclick="switchTab('history')" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-colors text-zinc-400 hover:text-white hover:bg-zinc-800" data-tab="history">
-                        <i class="fa-solid fa-clock-rotate-left mr-2"></i>Riwayat Pesanan
-                    </button>
-                    <button onclick="switchTab('products')" class="admin-only nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-colors text-zinc-400 hover:text-white hover:bg-zinc-800 hidden" data-tab="products">
-                        <i class="fa-solid fa-boxes-stacked mr-2"></i>Produk
-                    </button>
-                    <button onclick="switchTab('categories')" class="admin-only nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-colors text-zinc-400 hover:text-white hover:bg-zinc-800 hidden" data-tab="categories">
-                        <i class="fa-solid fa-tags mr-2"></i>Kategori
-                    </button>
-                    <button onclick="switchTab('analytics')" class="admin-only nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-colors text-zinc-400 hover:text-white hover:bg-zinc-800 hidden" data-tab="analytics">
-                        <i class="fa-solid fa-chart-line mr-2"></i>Laporan
-                    </button>
-                </nav>
+                </div>
             </div>
 
-            <div class="flex items-center space-x-4">
+            <!-- Tab Navigation - Horizontally Scrollable on Mobile -->
+            <nav id="nav-tabs" class="flex w-full md:w-auto overflow-x-auto no-scrollbar space-x-1.5 pb-1 md:pb-0">
+                <button onclick="switchTab('pos')" class="nav-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors bg-white text-black whitespace-nowrap shrink-0" data-tab="pos">
+                    <i class="fa-solid fa-cash-register mr-1.5"></i>Kasir (POS)
+                </button>
+                <button onclick="switchTab('history')" class="nav-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors text-zinc-400 hover:text-white hover:bg-zinc-800 whitespace-nowrap shrink-0" data-tab="history">
+                    <i class="fa-solid fa-clock-rotate-left mr-1.5"></i>Riwayat
+                </button>
+                <button onclick="switchTab('products')" class="admin-only nav-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors text-zinc-400 hover:text-white hover:bg-zinc-800 whitespace-nowrap shrink-0 hidden" data-tab="products">
+                    <i class="fa-solid fa-boxes-stacked mr-1.5"></i>Produk
+                </button>
+                <button onclick="switchTab('categories')" class="admin-only nav-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors text-zinc-400 hover:text-white hover:bg-zinc-800 whitespace-nowrap shrink-0 hidden" data-tab="categories">
+                    <i class="fa-solid fa-tags mr-1.5"></i>Kategori
+                </button>
+                <button onclick="switchTab('analytics')" class="admin-only nav-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors text-zinc-400 hover:text-white hover:bg-zinc-800 whitespace-nowrap shrink-0 hidden" data-tab="analytics">
+                    <i class="fa-solid fa-chart-line mr-1.5"></i>Laporan
+                </button>
+            </nav>
+
+            <!-- User Profile badge on Desktop -->
+            <div class="hidden md:flex items-center space-x-4">
                 <div class="flex items-center space-x-3 bg-zinc-800 px-3 py-1.5 rounded-full border border-zinc-700">
                     <div class="w-7 h-7 bg-zinc-700 rounded-full flex items-center justify-center text-xs font-bold" id="user-avatar-initial">A</div>
                     <div class="text-xs">
@@ -119,36 +124,53 @@
         <main class="flex-1 overflow-hidden relative">
             
             <!-- TAB 1: POS (KASIR) -->
-            <div id="tab-pos" class="tab-content h-full flex flex-col md:flex-row">
+            <div id="tab-pos" class="tab-content h-full flex flex-col md:flex-row relative">
                 <!-- Left: Product Catalog -->
-                <div class="flex-1 flex flex-col h-full bg-zinc-950 p-6 overflow-hidden">
+                <div class="flex-1 flex flex-col h-full bg-zinc-950 p-4 sm:p-6 overflow-hidden">
                     <!-- Search & Filter Category -->
-                    <div class="flex flex-col sm:flex-row gap-3 mb-6 shrink-0">
+                    <div class="flex flex-col sm:flex-row gap-3 mb-4 sm:mb-6 shrink-0">
                         <div class="relative flex-1">
-                            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500"></i>
+                            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 text-sm"></i>
                             <input type="text" id="pos-search" oninput="filterPOSProducts()" placeholder="Cari menu kopi atau makanan..." 
-                                class="w-full pl-11 pr-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors">
+                                class="w-full pl-10 pr-4 py-2.5 sm:py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-white text-sm placeholder-zinc-500 focus:outline-none focus:border-white transition-colors">
                         </div>
-                        <div id="pos-category-filters" class="flex gap-2 overflow-x-auto pb-1 sm:pb-0">
+                        <div id="pos-category-filters" class="flex gap-2 overflow-x-auto pb-1 sm:pb-0 no-scrollbar">
                             <!-- Populated dynamically -->
                         </div>
                     </div>
 
                     <!-- Products Grid -->
-                    <div class="flex-1 overflow-y-auto pr-2">
-                        <div id="pos-products-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="flex-1 overflow-y-auto pr-1 pb-16 md:pb-0">
+                        <div id="pos-products-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
                             <!-- Populated dynamically -->
                         </div>
                     </div>
                 </div>
 
-                <!-- Right: Cart & Checkout Panel -->
-                <div class="w-full md:w-96 bg-zinc-900 border-l border-zinc-800 flex flex-col h-full shrink-0">
+                <!-- Floating Bottom Cart Bar for Mobile -->
+                <div id="mobile-cart-bar" onclick="toggleMobileCart()" class="md:hidden fixed bottom-3 left-3 right-3 bg-white text-black p-3.5 rounded-2xl font-semibold flex items-center justify-between shadow-2xl z-30 cursor-pointer active:scale-95 transition-all">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-black text-white rounded-lg flex items-center justify-center text-xs font-bold" id="mobile-cart-count">0</div>
+                        <span class="text-sm">Pesanan Saat Ini</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-base font-bold" id="mobile-cart-total">Rp 0</span>
+                        <i class="fa-solid fa-chevron-up text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Right: Cart & Checkout Panel (Slide-over on Mobile) -->
+                <div id="cart-drawer" class="fixed md:relative inset-x-0 bottom-0 top-16 md:top-0 z-40 md:z-0 transform translate-y-full md:translate-y-0 transition-transform duration-300 w-full md:w-96 bg-zinc-900 border-t md:border-t-0 md:border-l border-zinc-800 flex flex-col h-[calc(100%-4rem)] md:h-full shrink-0 shadow-2xl md:shadow-none">
                     <div class="p-4 border-b border-zinc-800 flex items-center justify-between">
-                        <h2 class="font-semibold text-lg flex items-center">
+                        <h2 class="font-semibold text-base sm:text-lg flex items-center">
                             <i class="fa-solid fa-receipt mr-2"></i>Pesanan Saat Ini
                         </h2>
-                        <button onclick="clearCart()" class="text-xs text-zinc-400 hover:text-red-400 transition-colors">Kosongkan</button>
+                        <div class="flex items-center space-x-3">
+                            <button onclick="clearCart()" class="text-xs text-zinc-400 hover:text-red-400 transition-colors">Kosongkan</button>
+                            <button onclick="toggleMobileCart()" class="md:hidden text-zinc-400 hover:text-white p-1">
+                                <i class="fa-solid fa-xmark text-lg"></i>
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Cart Items -->
@@ -166,7 +188,7 @@
                                 <span>Subtotal</span>
                                 <span id="cart-subtotal">Rp 0</span>
                             </div>
-                            <div class="flex justify-between text-lg font-bold text-white pt-2 border-t border-zinc-800">
+                            <div class="flex justify-between text-base sm:text-lg font-bold text-white pt-2 border-t border-zinc-800">
                                 <span>Total</span>
                                 <span id="cart-total">Rp 0</span>
                             </div>
@@ -180,10 +202,10 @@
                         </div>
 
                         <div class="grid grid-cols-2 gap-2 pt-1">
-                            <button onclick="processCheckout('Cash')" class="py-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white font-medium rounded-xl transition-all text-sm">
+                            <button onclick="processCheckout('Cash')" class="py-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white font-medium rounded-xl transition-all text-xs sm:text-sm active:scale-95">
                                 <i class="fa-solid fa-money-bill-wave mr-1.5"></i>Tunai
                             </button>
-                            <button onclick="processCheckout('QRIS')" class="py-3 bg-white hover:bg-zinc-200 text-black font-semibold rounded-xl transition-all text-sm">
+                            <button onclick="processCheckout('QRIS')" class="py-3 bg-white hover:bg-zinc-200 text-black font-semibold rounded-xl transition-all text-xs sm:text-sm active:scale-95">
                                 <i class="fa-solid fa-qrcode mr-1.5"></i>QRIS / Transfer
                             </button>
                         </div>
@@ -192,32 +214,32 @@
             </div>
 
             <!-- TAB 2: ORDER HISTORY -->
-            <div id="tab-history" class="tab-content h-full flex flex-col p-6 overflow-hidden hidden">
-                <div class="flex items-center justify-between mb-6 shrink-0">
+            <div id="tab-history" class="tab-content h-full flex flex-col p-4 sm:p-6 overflow-hidden hidden">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 sm:mb-6 shrink-0">
                     <div>
-                        <h2 class="text-xl font-bold">Riwayat Pesanan</h2>
-                        <p class="text-sm text-zinc-400">Daftar transaksi yang telah diselesaikan</p>
+                        <h2 class="text-lg sm:text-xl font-bold">Riwayat Pesanan</h2>
+                        <p class="text-xs sm:text-sm text-zinc-400">Daftar transaksi yang telah diselesaikan</p>
                     </div>
-                    <div class="relative">
+                    <div class="relative w-full sm:w-auto">
                         <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500 text-sm"></i>
                         <input type="text" id="history-search" oninput="renderHistory()" placeholder="Cari ID / Kasir..." 
-                            class="pl-9 pr-4 py-2 bg-zinc-900 border border-zinc-800 rounded-xl text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-white">
+                            class="w-full sm:w-auto pl-9 pr-4 py-2 bg-zinc-900 border border-zinc-800 rounded-xl text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-white">
                     </div>
                 </div>
-                <div class="flex-1 overflow-y-auto bg-zinc-900 border border-zinc-800 rounded-2xl">
-                    <table class="w-full text-left border-collapse">
+                <div class="flex-1 overflow-x-auto overflow-y-auto bg-zinc-900 border border-zinc-800 rounded-2xl">
+                    <table class="w-full text-left border-collapse min-w-[600px]">
                         <thead>
                             <tr class="border-b border-zinc-800 text-xs font-semibold text-zinc-400 uppercase tracking-wider bg-zinc-900/50">
-                                <th class="p-4">ID Pesanan</th>
-                                <th class="p-4">Waktu</th>
-                                <th class="p-4">Kasir</th>
-                                <th class="p-4">Item</th>
-                                <th class="p-4">Total</th>
-                                <th class="p-4">Metode</th>
-                                <th class="p-4 text-right">Aksi</th>
+                                <th class="p-3 sm:p-4">ID Pesanan</th>
+                                <th class="p-3 sm:p-4">Waktu</th>
+                                <th class="p-3 sm:p-4">Kasir</th>
+                                <th class="p-3 sm:p-4">Item</th>
+                                <th class="p-3 sm:p-4">Total</th>
+                                <th class="p-3 sm:p-4">Metode</th>
+                                <th class="p-3 sm:p-4 text-right">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody id="history-table-body" class="divide-y divide-zinc-800 text-sm">
+                        <tbody id="history-table-body" class="divide-y divide-zinc-800 text-xs sm:text-sm">
                             <!-- Populated dynamically -->
                         </tbody>
                     </table>
@@ -225,29 +247,29 @@
             </div>
 
             <!-- TAB 3: PRODUCTS (ADMIN ONLY) -->
-            <div id="tab-products" class="tab-content h-full flex flex-col p-6 overflow-hidden hidden">
-                <div class="flex items-center justify-between mb-6 shrink-0">
+            <div id="tab-products" class="tab-content h-full flex flex-col p-4 sm:p-6 overflow-hidden hidden">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 sm:mb-6 shrink-0">
                     <div>
-                        <h2 class="text-xl font-bold">Kelola Produk</h2>
-                        <p class="text-sm text-zinc-400">Tambah, ubah, atau hapus menu coffee shop</p>
+                        <h2 class="text-lg sm:text-xl font-bold">Kelola Produk</h2>
+                        <p class="text-xs sm:text-sm text-zinc-400">Tambah, ubah, atau hapus menu coffee shop</p>
                     </div>
-                    <button onclick="openProductModal()" class="px-4 py-2 bg-white text-black font-semibold rounded-xl hover:bg-zinc-200 transition-all text-sm flex items-center">
+                    <button onclick="openProductModal()" class="w-full sm:w-auto px-4 py-2.5 bg-white text-black font-semibold rounded-xl hover:bg-zinc-200 transition-all text-xs sm:text-sm flex items-center justify-center">
                         <i class="fa-solid fa-plus mr-2"></i>Tambah Produk
                     </button>
                 </div>
-                <div class="flex-1 overflow-y-auto bg-zinc-900 border border-zinc-800 rounded-2xl">
-                    <table class="w-full text-left border-collapse">
+                <div class="flex-1 overflow-x-auto overflow-y-auto bg-zinc-900 border border-zinc-800 rounded-2xl">
+                    <table class="w-full text-left border-collapse min-w-[550px]">
                         <thead>
                             <tr class="border-b border-zinc-800 text-xs font-semibold text-zinc-400 uppercase tracking-wider bg-zinc-900/50">
-                                <th class="p-4">Gambar / Ikon</th>
-                                <th class="p-4">Nama Produk</th>
-                                <th class="p-4">Kategori</th>
-                                <th class="p-4">Harga</th>
-                                <th class="p-4">Stok</th>
-                                <th class="p-4 text-right">Aksi</th>
+                                <th class="p-3 sm:p-4">Gambar / Ikon</th>
+                                <th class="p-3 sm:p-4">Nama Produk</th>
+                                <th class="p-3 sm:p-4">Kategori</th>
+                                <th class="p-3 sm:p-4">Harga</th>
+                                <th class="p-3 sm:p-4">Stok</th>
+                                <th class="p-3 sm:p-4 text-right">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody id="products-table-body" class="divide-y divide-zinc-800 text-sm">
+                        <tbody id="products-table-body" class="divide-y divide-zinc-800 text-xs sm:text-sm">
                             <!-- Populated dynamically -->
                         </tbody>
                     </table>
@@ -255,26 +277,26 @@
             </div>
 
             <!-- TAB 4: CATEGORIES (ADMIN ONLY) -->
-            <div id="tab-categories" class="tab-content h-full flex flex-col p-6 overflow-hidden hidden">
-                <div class="flex items-center justify-between mb-6 shrink-0">
+            <div id="tab-categories" class="tab-content h-full flex flex-col p-4 sm:p-6 overflow-hidden hidden">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 sm:mb-6 shrink-0">
                     <div>
-                        <h2 class="text-xl font-bold">Kelola Kategori</h2>
-                        <p class="text-sm text-zinc-400">Kelola pengelompokan menu produk</p>
+                        <h2 class="text-lg sm:text-xl font-bold">Kelola Kategori</h2>
+                        <p class="text-xs sm:text-sm text-zinc-400">Kelola pengelompokan menu produk</p>
                     </div>
-                    <button onclick="openCategoryModal()" class="px-4 py-2 bg-white text-black font-semibold rounded-xl hover:bg-zinc-200 transition-all text-sm flex items-center">
+                    <button onclick="openCategoryModal()" class="w-full sm:w-auto px-4 py-2.5 bg-white text-black font-semibold rounded-xl hover:bg-zinc-200 transition-all text-xs sm:text-sm flex items-center justify-center">
                         <i class="fa-solid fa-plus mr-2"></i>Tambah Kategori
                     </button>
                 </div>
-                <div class="flex-1 overflow-y-auto bg-zinc-900 border border-zinc-800 rounded-2xl">
-                    <table class="w-full text-left border-collapse">
+                <div class="flex-1 overflow-x-auto overflow-y-auto bg-zinc-900 border border-zinc-800 rounded-2xl">
+                    <table class="w-full text-left border-collapse min-w-[400px]">
                         <thead>
                             <tr class="border-b border-zinc-800 text-xs font-semibold text-zinc-400 uppercase tracking-wider bg-zinc-900/50">
-                                <th class="p-4">Nama Kategori</th>
-                                <th class="p-4">Kode ID</th>
-                                <th class="p-4 text-right">Aksi</th>
+                                <th class="p-3 sm:p-4">Nama Kategori</th>
+                                <th class="p-3 sm:p-4">Kode ID</th>
+                                <th class="p-3 sm:p-4 text-right">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody id="categories-table-body" class="divide-y divide-zinc-800 text-sm">
+                        <tbody id="categories-table-body" class="divide-y divide-zinc-800 text-xs sm:text-sm">
                             <!-- Populated dynamically -->
                         </tbody>
                     </table>
@@ -282,34 +304,34 @@
             </div>
 
             <!-- TAB 5: ANALYTICS / LAPORAN (ADMIN ONLY) -->
-            <div id="tab-analytics" class="tab-content h-full flex flex-col p-6 overflow-y-auto hidden">
+            <div id="tab-analytics" class="tab-content h-full flex flex-col p-4 sm:p-6 overflow-y-auto hidden">
                 <div class="mb-6">
-                    <h2 class="text-xl font-bold">Laporan & Statistik</h2>
-                    <p class="text-sm text-zinc-400">Ringkasan penjualan dan performa toko</p>
+                    <h2 class="text-lg sm:text-xl font-bold">Laporan & Statistik</h2>
+                    <p class="text-xs sm:text-sm text-zinc-400">Ringkasan penjualan dan performa toko</p>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                    <div class="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">
+                    <div class="bg-zinc-900 border border-zinc-800 p-4 sm:p-5 rounded-2xl">
                         <div class="text-xs text-zinc-400 font-medium uppercase tracking-wider">Total Pendapatan</div>
-                        <div class="text-3xl font-bold text-white mt-2" id="stat-revenue">Rp 0</div>
+                        <div class="text-2xl sm:text-3xl font-bold text-white mt-2" id="stat-revenue">Rp 0</div>
                     </div>
-                    <div class="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl">
+                    <div class="bg-zinc-900 border border-zinc-800 p-4 sm:p-5 rounded-2xl">
                         <div class="text-xs text-zinc-400 font-medium uppercase tracking-wider">Total Transaksi</div>
-                        <div class="text-3xl font-bold text-white mt-2" id="stat-transactions">0</div>
+                        <div class="text-2xl sm:text-3xl font-bold text-white mt-2" id="stat-transactions">0</div>
                     </div>
-                    <div class="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl">
+                    <div class="bg-zinc-900 border border-zinc-800 p-4 sm:p-5 rounded-2xl">
                         <div class="text-xs text-zinc-400 font-medium uppercase tracking-wider">Menu Terjual</div>
-                        <div class="text-3xl font-bold text-white mt-2" id="stat-items-sold">0</div>
+                        <div class="text-2xl sm:text-3xl font-bold text-white mt-2" id="stat-items-sold">0</div>
                     </div>
                 </div>
 
-                <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl">
-                    <h3 class="font-semibold text-lg mb-4">Aksi Cepat & Integrasi Perangkat</h3>
-                    <div class="flex flex-wrap gap-4">
-                        <button onclick="testBluetoothPrinter()" class="px-4 py-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded-xl text-sm font-medium transition-all flex items-center">
+                <div class="bg-zinc-900 border border-zinc-800 p-4 sm:p-6 rounded-2xl">
+                    <h3 class="font-semibold text-base sm:text-lg mb-4">Aksi Cepat & Integrasi Perangkat</h3>
+                    <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+                        <button onclick="testBluetoothPrinter()" class="w-full sm:w-auto px-4 py-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center justify-center">
                             <i class="fa-solid fa-print mr-2 text-white"></i>Uji Sambungkan Printer Bluetooth
                         </button>
-                        <button onclick="exportDataCSV()" class="px-4 py-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded-xl text-sm font-medium transition-all flex items-center">
+                        <button onclick="exportDataCSV()" class="w-full sm:w-auto px-4 py-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center justify-center">
                             <i class="fa-solid fa-file-csv mr-2 text-white"></i>Export Data Transaksi (CSV)
                         </button>
                     </div>
@@ -398,127 +420,111 @@
     <!-- FIREBASE & APP SCRIPT -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, setDoc, doc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { 
+            getFirestore, 
+            collection, 
+            doc, 
+            setDoc, 
+            deleteDoc, 
+            onSnapshot 
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'syde-kasir-coffee-shop';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-          apiKey: "AIzaSyAU08I-eEq43CwBQaqq5e9-oe-EmBSVmjM",
-          authDomain: "sydekasir.firebaseapp.com",
-          projectId: "sydekasir",
-          storageBucket: "sydekasir.firebasestorage.app",
-          messagingSenderId: "1079974368162",
-          appId: "1:1079974368162:web:1daa239cd5f5b171db18fb",
-          measurementId: "G-64WFLP66Y0"
-        };
-
-        let db, auth, currentUserAuth;
-
-        // Default Seed Data
-        const defaultCategories = [
-            { id: 'coffee', name: 'Coffee' },
-            { id: 'non-coffee', name: 'Non-Coffee' },
-            { id: 'pastry', name: 'Pastry & Bread' },
-            { id: 'snacks', name: 'Snacks' }
-        ];
-
-        const defaultProducts = [
-            { id: 'p1', name: 'Caffe Latte', category: 'coffee', price: 28000, stock: 45, image: '☕' },
-            { id: 'p2', name: 'Cappuccino', category: 'coffee', price: 28000, stock: 40, image: '☕' },
-            { id: 'p3', name: 'Americano', category: 'coffee', price: 24000, stock: 50, image: '🥤' },
-            { id: 'p4', name: 'Caramel Macchiato', category: 'coffee', price: 34000, stock: 30, image: '🍮' },
-            { id: 'p5', name: 'Matcha Latte', category: 'non-coffee', price: 32000, stock: 25, image: '🍵' },
-            { id: 'p6', name: 'Chocolate Belgian', category: 'non-coffee', price: 30000, stock: 25, image: '🍫' },
-            { id: 'p7', name: 'Butter Croissant', category: 'pastry', price: 22000, stock: 15, image: '🥐' },
-            { id: 'p8', name: 'Almond Croissant', category: 'pastry', price: 26000, stock: 12, image: '🥐' },
-            { id: 'p9', name: 'French Fries', category: 'snacks', price: 20000, stock: 40, image: '🍟' },
-            { id: 'p10', name: 'Platter Mix', category: 'snacks', price: 35000, stock: 20, image: '🍢' }
-        ];
-
+        // APP STATE MANAGEMENT
         window.state = {
             currentUser: null,
-            categories: [],
-            products: [],
-            orders: [],
-            cart: [],
+            activeTab: 'pos',
             activeCategoryFilter: 'all',
-            activeTab: 'pos'
+            cart: [],
+            products: [
+                { id: 'prod-1', name: 'Espresso', category: 'coffee', price: 18000, stock: 50, image: '☕' },
+                { id: 'prod-2', name: 'Americano', category: 'coffee', price: 22000, stock: 50, image: '☕' },
+                { id: 'prod-3', name: 'Caffe Latte', category: 'coffee', price: 28000, stock: 40, image: '☕' },
+                { id: 'prod-4', name: 'Cappuccino', category: 'coffee', price: 28000, stock: 35, image: '☕' },
+                { id: 'prod-5', name: 'Matcha Latte', category: 'non-coffee', price: 30000, stock: 25, image: '🍵' },
+                { id: 'prod-6', name: 'Iced Chocolate', category: 'non-coffee', price: 28000, stock: 30, image: '🍫' },
+                { id: 'prod-7', name: 'Butter Croissant', category: 'pastry', price: 25000, stock: 15, image: '🥐' }
+            ],
+            categories: [
+                { id: 'coffee', name: 'Coffee' },
+                { id: 'non-coffee', name: 'Non-Coffee' },
+                { id: 'pastry', name: 'Pastry' }
+            ],
+            orders: []
         };
 
-        async function initFirebase() {
+        const appId = "syde-kasir-app";
+        let db = null;
+        let currentUserAuth = true;
+
+        // Initialize Firebase SDK & Listeners
+        function initFirebase() {
+            const firebaseConfig = {
+                apiKey: "AIzaSyAU08I-eEq43CwBQaqq5e9-oe-EmBSVmjM",
+                authDomain: "sydekasir.firebaseapp.com",
+                projectId: "sydekasir",
+                storageBucket: "sydekasir.firebasestorage.app",
+                messagingSenderId: "1079974368162",
+                appId: "1:1079974368162:web:1daa239cd5f5b171db18fb",
+                measurementId: "G-64WFLP66Y0"
+            };
+
             try {
                 const app = initializeApp(firebaseConfig);
                 db = getFirestore(app);
-                auth = getAuth(app);
 
-                // MANDATORY RULE: Authentication first before queries
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-
-                onAuthStateChanged(auth, (user) => {
-                    if (user) {
-                        currentUserAuth = user;
-                        console.log("Firebase Auth Sukses. User UID:", user.uid);
-                        setupRealtimeSync();
+                // Setup Realtime Sync for Products
+                onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'products'), (snapshot) => {
+                    if (!snapshot.empty) {
+                        const prods = [];
+                        snapshot.forEach((doc) => prods.push(doc.data()));
+                        window.state.products = prods;
+                        renderPOSProducts();
+                        if (window.state.activeTab === 'products') renderProductsTable();
                     }
-                });
+                }, (error) => console.warn("Firestore products sync fallback:", error));
+
+                // Setup Realtime Sync for Categories
+                onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'categories'), (snapshot) => {
+                    if (!snapshot.empty) {
+                        const cats = [];
+                        snapshot.forEach((doc) => cats.push(doc.data()));
+                        window.state.categories = cats;
+                        renderPOSCategories();
+                        if (window.state.activeTab === 'categories') renderCategoriesTable();
+                    }
+                }, (error) => console.warn("Firestore categories sync fallback:", error));
+
+                // Setup Realtime Sync for Orders
+                onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'orders'), (snapshot) => {
+                    if (!snapshot.empty) {
+                        const ords = [];
+                        snapshot.forEach((doc) => ords.push(doc.data()));
+                        window.state.orders = ords;
+                        if (window.state.activeTab === 'history') renderHistory();
+                        if (window.state.activeTab === 'analytics') renderAnalytics();
+                    }
+                }, (error) => console.warn("Firestore orders sync fallback:", error));
+
             } catch (err) {
-                console.error("Firebase init fallback error:", err);
-                window.state.categories = defaultCategories;
-                window.state.products = defaultProducts;
-                renderAll();
+                console.warn("Firebase initialization error, fallback to local memory state:", err);
             }
         }
 
-        function setupRealtimeSync() {
-            if (!db || !currentUserAuth) return;
+        // Logout Handler
+        window.logout = function() {
+            window.state.currentUser = null;
+            document.getElementById('login-screen').classList.remove('hidden');
+            document.getElementById('main-app').classList.add('hidden');
+        };
 
-            // MANDATORY RULE 1: Public path structure /artifacts/{appId}/public/data/{collectionName}
-            // Categories Sync
-            const catCol = collection(db, 'artifacts', appId, 'public', 'data', 'categories');
-            onSnapshot(catCol, (snapshot) => {
-                if (snapshot.empty) {
-                    defaultCategories.forEach(async (c) => {
-                        await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'categories', c.id), c);
-                    });
-                } else {
-                    window.state.categories = [];
-                    snapshot.forEach(docSnap => {
-                        window.state.categories.push({ id: docSnap.id, ...docSnap.data() });
-                    });
-                    renderAll();
-                }
-            }, (error) => console.error("Realtime Categories Error:", error));
-
-            // Products Sync
-            const prodCol = collection(db, 'artifacts', appId, 'public', 'data', 'products');
-            onSnapshot(prodCol, (snapshot) => {
-                if (snapshot.empty) {
-                    defaultProducts.forEach(async (p) => {
-                        await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', p.id), p);
-                    });
-                } else {
-                    window.state.products = [];
-                    snapshot.forEach(docSnap => {
-                        window.state.products.push({ id: docSnap.id, ...docSnap.data() });
-                    });
-                    renderAll();
-                }
-            }, (error) => console.error("Realtime Products Error:", error));
-
-            // Orders Sync
-            const orderCol = collection(db, 'artifacts', appId, 'public', 'data', 'orders');
-            onSnapshot(orderCol, (snapshot) => {
-                window.state.orders = [];
-                snapshot.forEach(docSnap => {
-                    window.state.orders.push({ id: docSnap.id, ...docSnap.data() });
-                });
-                renderHistory();
-                renderAnalytics();
-            }, (error) => console.error("Realtime Orders Error:", error));
+        // Toggle Mobile Cart Drawer
+        window.toggleMobileCart = function() {
+            const drawer = document.getElementById('cart-drawer');
+            if (drawer.classList.contains('translate-y-full')) {
+                drawer.classList.remove('translate-y-full');
+            } else {
+                drawer.classList.add('translate-y-full');
+            }
         }
 
         // Login Handler
@@ -542,7 +548,7 @@
             document.getElementById('user-display-name').innerText = window.state.currentUser.username;
             document.getElementById('user-display-role').innerText = window.state.currentUser.role === 'admin' ? 'Administrator' : 'Kasir Toko';
             document.getElementById('user-avatar-initial').innerText = window.state.currentUser.username[0];
-
+            document.getElementById('user-avatar-mobile').innerText = window.state.currentUser.username[0];
             if (window.state.currentUser.role === 'admin') {
                 document.querySelectorAll('.admin-only').forEach(el => el.classList.remove('hidden'));
             } else {
@@ -552,13 +558,7 @@
             renderAll();
         });
 
-        window.logout = function() {
-            window.state.currentUser = null;
-            document.getElementById('main-app').classList.add('hidden');
-            document.getElementById('login-screen').classList.remove('hidden');
-            document.getElementById('login-form').reset();
-        }
-
+        // Navigation Tab Switcher
         window.switchTab = function(tabName) {
             window.state.activeTab = tabName;
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
@@ -690,6 +690,8 @@
 
         function renderCart() {
             const container = document.getElementById('cart-items-container');
+            const totalCount = window.state.cart.reduce((acc, i) => acc + i.qty, 0);
+
             if (window.state.cart.length === 0) {
                 container.innerHTML = `
                     <div class="h-full flex flex-col items-center justify-center text-zinc-500 text-center">
@@ -699,6 +701,8 @@
                 `;
                 document.getElementById('cart-subtotal').innerText = 'Rp 0';
                 document.getElementById('cart-total').innerText = 'Rp 0';
+                document.getElementById('mobile-cart-count').innerText = '0';
+                document.getElementById('mobile-cart-total').innerText = 'Rp 0';
                 return;
             }
 
@@ -710,12 +714,12 @@
                 html += `
                     <div class="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-3 flex items-center justify-between">
                         <div class="flex-1 pr-2">
-                            <h5 class="font-semibold text-sm line-clamp-1">${item.name}</h5>
+                            <h5 class="font-semibold text-xs sm:text-sm line-clamp-1">${item.name}</h5>
                             <span class="text-xs text-zinc-400">Rp ${item.price.toLocaleString('id-ID')}</span>
                         </div>
                         <div class="flex items-center space-x-2">
                             <button onclick="updateCartQty('${item.id}', -1)" class="w-7 h-7 bg-zinc-700 hover:bg-zinc-600 rounded-lg flex items-center justify-center text-xs transition-colors">-</button>
-                            <span class="w-6 text-center text-sm font-semibold">${item.qty}</span>
+                            <span class="w-6 text-center text-xs sm:text-sm font-semibold">${item.qty}</span>
                             <button onclick="updateCartQty('${item.id}', 1)" class="w-7 h-7 bg-zinc-700 hover:bg-zinc-600 rounded-lg flex items-center justify-center text-xs transition-colors">+</button>
                         </div>
                     </div>
@@ -727,6 +731,8 @@
 
             document.getElementById('cart-subtotal').innerText = `Rp ${subtotal.toLocaleString('id-ID')}`;
             document.getElementById('cart-total').innerText = `Rp ${grandTotal.toLocaleString('id-ID')}`;
+            document.getElementById('mobile-cart-count').innerText = totalCount;
+            document.getElementById('mobile-cart-total').innerText = `Rp ${grandTotal.toLocaleString('id-ID')}`;
         }
 
         // Checkout & Payment
